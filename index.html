@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.css">
     <script src="app/main.js" defer></script>
+    <title>adCar</title>
   </head>
 
   <body>
@@ -12,29 +14,66 @@
       <p>ads for your life</p>
       <section>
         <form>
-          <label>
-            <input type="radio" name="login">
-            Alice
-          </label>
-          <label>
-            <input type="radio" name="login">
-            Bob
-          </label>
+          <fieldset>
+            <legend>Login</legend>
+            <label>
+              <input type="radio" name="login">
+              Alice
+            </label>
+            <label>
+              <input type="radio" name="login">
+              Bob
+            </label>
+          </fieldset>
         </form>
       </section>
     </header>
 
-    <body>
-      <main>
+    <main>
+
       <section>
-        <header></header>
-        <main></main>
+        <header>
+          <h1>Management</h1>
+        </header>
+        <main>
+        </main>
       </section>
+
       <section>
-        <header></header>
-        <main></main>
+        <header>
+          <h1>Available Ads</h1>
+          <fieldset>
+            <legend>Brands</legend>
+          </fieldset>
+        </header>
+        <form>
+          <!-- Dynamic insertion of "brand-button" -->
+        </form>
+        <main>
+          <!-- Dynamic insertion of "ad-card" -->
+        </main>
       </section>
-      </main>
-    </body>
+
+    </main>
+
+    <template id="brand-button">
+      <label>
+        <input type="checkbox">
+        <figure>
+          <img>
+          <figcaption>
+          </figcaption>
+        </figure>
+      </label>
+    </template>
+
+    <template id="ad-card">
+      <h1></h1>
+      <img></img>
+      <p>$<span></span> for <span></span> <span></span></p>
+      <button type="button">I want it!</button>
+    </template>
+
   </body>
+
 </html>
