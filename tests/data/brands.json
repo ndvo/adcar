@@ -1,19 +1,19 @@
 [
 	{
 		"name": "Apple",
-		"logo": ""
+		"logo": "/images/apple.png"
 	},
 	{
 		"name": "Microsoft",
-		"logo": ""
+		"logo": "/images/microsoft.png"
 	},
 	{
 		"name": "Amazon",
-		"logo": ""
+		"logo": "/images/amazon.png"
 	},
 	{
 		"name": "WallMart",
-		"logo":""
+		"logo":"/images/wallmart.png"
 	}
 
 ]
