@@ -50,9 +50,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="-804.57828"
-     inkscape:cy="371.52114"
+     inkscape:zoom="0.35"
+     inkscape:cx="-497.6063"
+     inkscape:cy="728.16474"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1158,5 +1158,23 @@
          x="-18.362598"
          y="102.01745"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05555534px;font-family:Thasadith;-inkscape-font-specification:'Thasadith Bold';fill:#ffffff;fill-opacity:1;stroke-width:0.50704443">done</tspan></text>
+    <rect
+       style="opacity:1;fill:#2a6259;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1294"
+       width="61.988094"
+       height="13.607142"
+       x="-157.0491"
+       y="299.83484"
+       rx="3.779758"
+       ry="3.779758" />
+    <rect
+       style="opacity:1;fill:#2a6259;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1296"
+       width="493.91406"
+       height="331.41418"
+       x="-1077.6307"
+       y="234.99345"
+       rx="3.779758"
+       ry="3.779758" />
   </g>
 </svg>

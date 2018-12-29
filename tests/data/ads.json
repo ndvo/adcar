@@ -34,14 +34,5 @@
     "image":"amazon-prime.jpeg",
     "alt": "alternative text",
     "brand":"Amazon"
-  },
-  {
-    "title":"Amazon Prime Membership",
-    "value":"100",
-    "period":"2",
-    "duration-measure":"weeks",
-    "image":"amazon-prime.jpeg",
-    "alt": "alternative text",
-    "brand":"Amazon"
   }
 ]
