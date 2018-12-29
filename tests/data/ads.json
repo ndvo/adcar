@@ -1,5 +1,6 @@
 [
   {
+    "id":"iphone_17",
     "title":"Iphone 17",
     "value":"100",
     "period":"1",
@@ -9,6 +10,7 @@
     "brand":"Apple"
   },
   {
+    "id":"shopping_cart",
     "title":"Shopping Cart",
     "value":"50",
     "period":"1",
@@ -18,6 +20,7 @@
     "brand":""
   },
   {
+    "id":"office_360",
     "title":"Office 360",
     "value":"120",
     "period":"1",
@@ -27,15 +30,7 @@
     "brand":"Microsoft"
   },
   {
-    "title":"Amazon Prime Membership",
-    "value":"100",
-    "period":"2",
-    "duration-measure":"weeks",
-    "image":"amazon-prime.jpeg",
-    "alt": "alternative text",
-    "brand":"Amazon"
-  },
-  {
+    "id":"amazon_prime_membership",
     "title":"Amazon Prime Membership",
     "value":"100",
     "period":"2",

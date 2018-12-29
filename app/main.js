@@ -1,5 +1,8 @@
 
 
+
+
+
 // Actions 
 
 /** 
@@ -9,10 +12,12 @@ function selectAd(){
   let clone = this.parentElement.cloneNode(true);
   let management = document.querySelector('#section-management main');
   let availableAds = document.querySelector('#available-ads');
+  management.parentNode.classList.add('active');
+  activateActionsButtons(management);
   management.innerHTML = '';
   management.appendChild(clone);
   availableAds.classList.add('block-ad');
-  Array.from(availableAds.querySelectorAll('button')).forEach(
+  availableAds.querySelectorAll('button').forEach(
     function(e){
       e.disabled = true;
       e.removeEventListener('click', selectAd);
@@ -20,16 +25,30 @@ function selectAd(){
   );
 }
 
+/**
+ * Cash out the reward
+ */
+function cashOut(){
+  let management = document.querySelector('#section-management main');
+  let activeAd = management.querySelector('.ad-card');
+  let value = Number(activeAd.querySelector('span').innerText);
+  let gains = management.parentNode.querySelector('.gains');
+  gains.innerText = Number(gains.innerText)+value;
+  unselectAd();
+}
+
 /** 
  * Un-select any selected ad
  */
 function unselectAd(){
   let management = document.querySelector('#section-management main');
+  management.parentNode.classList.remove('active');
+  deActivateActionsButtons(management);
   let availableAds = document.querySelector('#available-ads');
-  let activeAd = management.querySelector('ad-card');
+  let activeAd = management.querySelector('.ad-card');
   activeAd.parentNode.removeChild(activeAd);
   availableAds.classList.remove('block-ad');
-  Array.from(availableAds.querySelectorAll('button')).forEach(
+  availableAds.querySelectorAll('button').forEach(
     function(e){
       e.disabled = false;
       activateAdButton(e);
@@ -39,6 +58,20 @@ function unselectAd(){
 
 function activateAdButton(el){
   el.addEventListener('click', selectAd);
+}
+
+function activateActionsButtons(el, deActivate){
+  el.querySelectorAll('.actions button').forEach(
+    function(e){
+      e.disabled = !deActivate;
+    }
+  );
+}
+function deActivateActionsButtons(el){
+  activateActionsButtons(el, true);
+}
+function toggleActivateActionsButtons(el){
+  activateActionsButtons(el, el.disabled);
 }
 
 // Services 
@@ -105,5 +138,12 @@ function fill_template(target_selector, data, template_selector, fill_func){
 }
 
 
-fetch_ads();
-fetch_companies();
+function preparePage(){
+  document.querySelector('#section-management button.cancel')
+    .addEventListener('click',unselectAd);
+  document.querySelector('#section-management button.ok')
+    .addEventListener('click',cashOut);
+  fetch_ads();
+  fetch_companies();
+}
+preparePage();
