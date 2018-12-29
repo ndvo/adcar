@@ -105,12 +105,15 @@ body{
         font-weight: 700;
       }
 
+
+
 main{
   margin: 0 auto;
   width: 90vw;
   max-width: 1024px;
 }
-  main>section{
+  #section-management,
+  #available-ads {
     background-color: var(--color-light-glass);
     border-radius: 10px;
     box-sizing: border-box;
@@ -131,6 +134,13 @@ main{
   display: flex;
   flex-direction: column;
 }
+  #available-ads>header{
+    display: flex;
+    flex-direction: column;
+  }
+  #available-ads form{
+    order:-1;
+  }
   #available-ads>main{
     align-content: stretch;
     align-items: stretch;
@@ -142,7 +152,7 @@ main{
 
 .ad-card{
   background-color: var(--color-secondary);
-  border: 4px solid var(--color-light);
+  border: 4px solid var(--color-light-alt);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -152,6 +162,7 @@ main{
   padding: 0;
   width:33%;
   border-radius: 10px;
+  position: relative;
 }
   .ad-card h1{
     margin: 20px 10px;
@@ -166,16 +177,28 @@ main{
   }
   .ad-card p{
     margin: 0 10px 10px;
+    color: var(--color-primary-alt);
+    padding-bottom: 70px;
   }
   .ad-card span{
     font-weight: 700;
   }
   .ad-card button{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Thasadith', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--color-tertiary);
+
     height: 60px;
     border: none;
     border-radius: 0 0 8px 8px;
-      background-color: var(--color-primary);
+    background-color: var(--color-primary);
   }
-  .ad-card.block-ad button{
+  .block-ad button{
     display: none;
   }
