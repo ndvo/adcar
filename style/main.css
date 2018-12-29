@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Thasadith:400,700');
+
+/*
+Resets
+*/
+html, body, main, div{
+  margin: 0;
+  padding: 0;
+  font-family: 'Thasadith', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+/*
+Variables
+*/
+:root{
+  --color-primary: #3f786f;       /*dark grey*/
+  --color-primary-alt: #2a6259;
+  --color-secondary: #44b3a2;     /*blueish grey*/
+  --color-secondary-alt: #329485;
+  --color-tertiary: #dfdce3;      /*light grey*/
+  --color-tertiary-alt: #c1c0c3;
+  --color-light: #fff;            /*white*/
+  --color-light-alt: #f2f2f2;
+  --color-focus: #f8b633;         /*yellow-orange*/
+  --color-focus-alt: #e1a93b;
+  --color-strong: #fe491a;        /*red*/
+  --color-strong-alt: #da4d28;
+
+  --font-basic: 'Thasadith', sans-serif;
+  --font-alternative: serif;
+}
+
+/*
+Body
+*/
+body{
+  background-color: var(--color-secondary);
+}
+  body>header{
+    background-color: var(--color-light);
+    display: flex;
+    height: 120px;
+    justify-content: space-between;
+  }
+    body>header h1,
+    body>header p,
+    #header-login{
+      align-self: center;
+      /* border: 1px solid pink; */
+      display: inline-block;
+      flex-grow: 0;
+    }
+    body>header h1{
+      font-size: 50px;
+      font-weight: 400;
+      padding-left: 20px;
+    }
+      body>header h1 span{
+        font-weight: 700;
+      }
+    body>header p{
+      color: var(--color-focus);
+      flex-grow: 10;
+      font-size: 26px;
+      padding: 16px 0 0 5px;
+    }
+
+    #header-login{
+      flex-grow: 0;
+    }
+      #header-login *{
+        border: 0;
+      }
+      #header-login legend{
+        display: none;
+      }
+      #header-login input[type="radio"]{
+        display: none;
+      }
+      #header-login label{
+        background-color: var(--color-light-alt);
+        color: var(--color-secondary);
+        display: inline-block;
+        height: 100%;
+        margin: 0;
+        min-width: 60px;
+        padding: 20px 20px;
+        text-align: center;
+      }
+      #header-login label:first-of-type{
+        border-radius: 10px 0 0 10px;
+      }
+      #header-login label:last-child{
+        border-radius: 0 10px 10px 0;
+      }
+      #header-login label:hover{
+        background-color: var(--color-secondary);
+      }
+      #header-login input[type="radio"]:checked + .login-label{
+        background-color: var(--color-focus);
+        color: var(--color-light);
+        font-weight: 700;
+      }
