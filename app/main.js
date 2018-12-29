@@ -6,7 +6,7 @@ function fetch_companies(){
   xhr.onreadystatechange = function(){
     if (xhr.readyState == xhr.DONE){
       if (xhr.status == 200){
-        fill_template('#available-ads form', JSON.parse(xhr.responseText), '#brand-button', fill_company);
+        fill_template('#available-ads form fieldset', JSON.parse(xhr.responseText), '#brand-button', fill_company);
       }else{
         console.log('<dialog>Error: it was not possible to retrieve brand data.</dialog>');
       }
@@ -52,9 +52,10 @@ function fill_template(target_selector, data, template_selector, fill_func){
   for (let i=0; i<data.length; i++){
     content += template.innerHTML;
   }
-  target.innerHTML  = content;
+  target.innerHTML  += content;
   for (let i=0; i<data.length; i++){
-    fill_func(target.children[i], data[i]);
+    console.log(template.id ,template.querySelectorAll('.'+template.id)[i], data[i]);
+    fill_func(target.querySelectorAll('.'+template.id)[i], data[i]);
   }
 }
 
