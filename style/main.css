@@ -121,6 +121,8 @@ main>section{
   padding: 10px 20px;
   width:100%;
 }
+
+
   #section-management,
   #available-ads {
     background-color: var(--color-light-glass);
@@ -129,16 +131,21 @@ main>section{
   #section-management{
 
   }
+
   #section-management footer{
     border-top: 2px solid var(--color-secondary);
     padding: 10px 0;
     display: flex;
     justify-content: flex-end;
   }
+  #section-management footer.hide{
+    display:none;
+  }
+
   #section-management footer button{
     padding: 8px 40px;
     border-radius: 8px;
-    border: 8px solid var(--color-light-alt);
+    border: 6px solid var(--color-light-alt);
     font-family: "Thasadith", sans-serif;
     font-size: 20px;
     font-weight: 700;
