@@ -91,6 +91,28 @@ function unselectAd(preserveStored){
   );
 }
 
+/**
+ * Filter Ads by Brand
+ */
+function filterAdsByBrand(){
+  document.querySelectorAll('.ad-card').forEach(
+    function(ad){
+      ad.classList.remove('selected');
+    }
+  );
+  document.querySelectorAll('#section-brands input:checked').forEach(
+    function(selected){
+      console.log(selected);
+      let companyId = selected.value;
+      document.querySelectorAll('#available-ads .'+companyId).forEach(
+        function(ad){
+          ad.classList.add('selected');
+        }
+      );
+    }
+  );
+}
+
 
 /*** Utils ***/
 function activateAdButton(el){
@@ -120,6 +142,12 @@ function fetch_companies(){
     if (xhr.readyState == xhr.DONE){
       if (xhr.status == 200){
         fill_template('#section-brands form fieldset', JSON.parse(xhr.responseText), '#brand-button', fill_company);
+        document.querySelectorAll('label.brand-button').forEach(
+          function(e){
+            e.addEventListener('click', filterAdsByBrand);
+          }
+        );
+        filterAdsByBrand();
       }else{
         console.log('<dialog>Error: it was not possible to retrieve brand data.</dialog>');
       }
@@ -160,6 +188,7 @@ function fetch_users(){
 /*** Fill Functions (Controlers) ***/
 function fill_ad(el, ad){
   el.setAttribute('id', ad.id);
+  el.classList.add(ad.brand);
   el.querySelector('h1').innerHTML = ad.title;
   el.querySelector('img').setAttribute('src', '/content/images/'+ad.image);
   el.querySelector('img').setAttribute('alt', ad.alt);
@@ -170,6 +199,9 @@ function fill_ad(el, ad){
 }
 
 function fill_company(el, company){
+  el.setAttribute('id', company.name);
+  el.querySelector('input').setAttribute('value', company.name);
+  el.querySelector('input').setAttribute('checked', true);
   el.querySelector('img').setAttribute('src', '/content/images/'+company.logo);
   el.querySelector('figcaption').innerHTML = company.name;
 }
@@ -199,6 +231,7 @@ function preparePage(){
     function(e){
       e.addEventListener('click', setUser);
     });
+
   fetch_users();
   fetch_ads();
   fetch_companies();
