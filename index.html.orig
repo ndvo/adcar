@@ -67,12 +67,19 @@
     </template>
 
     <template id="ad-card">
+<<<<<<< HEAD
+      <h1></h1>
+      <img>
+      <p>$<span></span> for <span></span> <span></span></p>
+      <button type="button">I want it!</button>
+=======
       <div class="ad-card">
         <h1> </h1>
         <img>
         <p>$<span></span> for <span></span> <span></span></p>
         <button type="button">I want it!</button>
       </div>
+>>>>>>> 00421b416865326089940a5643d103eb50cf5569
     </template>
 
   </body>
