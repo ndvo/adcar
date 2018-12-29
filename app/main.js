@@ -76,7 +76,7 @@ function toggleActivateActionsButtons(el){
 }
 
 function setUser(){
-  Application.currentUser = document.querySelector('[name=login]:checked]').value;
+  Application.currentUser = document.querySelector('[name=login]:checked').value;
 }
 
 /*** Services ***/
@@ -86,7 +86,7 @@ function fetch_companies(){
   xhr.onreadystatechange = function(){
     if (xhr.readyState == xhr.DONE){
       if (xhr.status == 200){
-        fill_template('#available-ads form fieldset', JSON.parse(xhr.responseText), '#brand-button', fill_company);
+        fill_template('#section-brands form fieldset', JSON.parse(xhr.responseText), '#brand-button', fill_company);
       }else{
         console.log('<dialog>Error: it was not possible to retrieve brand data.</dialog>');
       }
