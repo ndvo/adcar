@@ -45,6 +45,9 @@ body{
     display: flex;
     height: 120px;
     justify-content: space-between;
+    /* position: absolute;
+    width: 100%;
+    top:0; */
   }
     body>header h1,
     body>header p,
@@ -129,14 +132,35 @@ main>section{
   }
 
   .gains{
-
+    font-size: 30px;
+    color: var(--color-secondary-alt);
   }
   .gains::before{
-    content:"you earned US$ "
+    content:"US$ ";
   }
   .gains::after{
-    content:",00"
+    content:",00";
   }
+
+  /* #section-management{
+    scroll-margin-top: 600px;
+  } */
+  #section-management{
+    min-height: 200px;
+  }
+  #section-management.active{
+    min-height: 600px;
+  }
+  #section-management header div{
+    float: right;
+  }
+
+
+
+  /* #section-management.active main{
+    position: absolute;
+    bottom: 0;
+  } */
 
   #section-management footer{
     border-top: 2px solid var(--color-secondary);
