@@ -2,19 +2,43 @@ var Application = {};
 var Users = {};
 
 
+
+
 /*** Actions  ***/
+
+/**
+ * Change users
+ */
+function setUser(){
+  Application.currentUser = document.querySelector('[name=login]:checked').value;
+  console.log(Application.currentUser);
+  let preserveStored = true;
+  unselectAd(preserveStored);
+  console.log(Users, Application);
+  let selected = Users[Application.currentUser].selected;
+  if (selected){
+    document.getElementById(selected).querySelector('button').click();
+  }
+}
 
 /** 
  * Select and activate an Ad
  */
 function selectAd(){
-  let clone = this.parentElement.cloneNode(true);
+  let selectedAd = this.parentElement;
+  // Store selected ad
+  Users[Application.currentUser].selected = selectedAd.id;
+  let clone = selectedAd.cloneNode(true);
   let management = document.querySelector('#section-management main');
   let availableAds = document.querySelector('#available-ads');
+  // Set selected as active
   management.parentNode.classList.add('active');
+  // Activate manage buttons
   activateActionsButtons(management);
+  // Set Active ad
   management.innerHTML = '';
   management.appendChild(clone);
+  // Block selection of other ads
   availableAds.classList.add('block-ad');
   availableAds.querySelectorAll('button').forEach(
     function(e){
@@ -39,13 +63,19 @@ function cashOut(){
 /** 
  * Un-select any selected ad
  */
-function unselectAd(){
+function unselectAd(preserveStored){
+  // Store selected ad
+  if (! preserveStored){
+    Users[Application.currentUser].selected = '';
+  }
   let management = document.querySelector('#section-management main');
   management.parentNode.classList.remove('active');
   deActivateActionsButtons(management);
   let availableAds = document.querySelector('#available-ads');
   let activeAd = management.querySelector('.ad-card');
-  activeAd.parentNode.removeChild(activeAd);
+  if (activeAd){
+    activeAd.parentNode.removeChild(activeAd);
+  }
   availableAds.classList.remove('block-ad');
   availableAds.querySelectorAll('button').forEach(
     function(e){
@@ -75,9 +105,6 @@ function toggleActivateActionsButtons(el){
   activateActionsButtons(el, el.disabled);
 }
 
-function setUser(){
-  Application.currentUser = document.querySelector('[name=login]:checked').value;
-}
 
 /*** Services ***/
 function fetch_companies(){
@@ -117,13 +144,16 @@ function fetch_users(){
     if (xhr.readyState == xhr.DONE){
       if (xhr.status == 200){
         Users = JSON.parse(xhr.responseText);
+        setUser();
       }
     }
   };
+  xhr.send();
 }
 
 /*** Fill Functions (Controlers) ***/
 function fill_ad(el, ad){
+  el.setAttribute('id', ad.id);
   el.querySelector('h1').innerHTML = ad.title;
   el.querySelector('img').setAttribute('src', '/content/images/'+ad.image);
   el.querySelector('img').setAttribute('alt', ad.alt);
@@ -159,11 +189,12 @@ function preparePage(){
     .addEventListener('click', unselectAd);
   document.querySelector('#section-management button.ok')
     .addEventListener('click', cashOut);
-  document.querySelector('[name=login]')
-    .addEventListener('click', setUser);
-  setUser();
-  fetch_ads();
+  document.querySelectorAll('[name=login]').forEach(
+    function(e){
+      e.addEventListener('click', setUser);
+    });
   fetch_users();
+  fetch_ads();
   fetch_companies();
 }
 
