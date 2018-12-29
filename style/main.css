@@ -125,6 +125,39 @@ main>section{
   #available-ads {
     background-color: var(--color-light-glass);
   }
+
+  #section-management{
+
+  }
+  #section-management footer{
+    border-top: 2px solid var(--color-secondary);
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  #section-management footer button{
+    padding: 8px 40px;
+    border-radius: 8px;
+    border: 8px solid var(--color-light-alt);
+    font-family: "Thasadith", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-light);
+    margin: 10px 0 0;
+  }
+  #section-management footer button:first-of-type{
+    margin-right: 10px;
+  }
+  .ok{
+    background-color: var(--color-focus);
+  }
+  .cancel{
+    background-color: var(--color-strong);
+  }
+
+
+
+
   #section-brands{
     background-color: var(--color-primary-glass);
   }
