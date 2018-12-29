@@ -4,7 +4,7 @@ var Users = {};
 
 /*** Actions  ***/
 
-/** 
+/**
  * Select and activate an Ad
  */
 function selectAd(){
@@ -36,7 +36,7 @@ function cashOut(){
   unselectAd();
 }
 
-/** 
+/**
  * Un-select any selected ad
  */
 function unselectAd(){
@@ -142,7 +142,7 @@ function fill_company(el, company){
 /*** Template Engine ***/
 function fill_template(target_selector, data, template_selector, fill_func){
   let target = document.querySelector(target_selector);
-  let template = document.querySelector(template_selector); 
+  let template = document.querySelector(template_selector);
   let content ='';
   for (let i=0; i<data.length; i++){
     content += template.innerHTML;
