@@ -1,10 +1,11 @@
-[
+{
+  "alice":
   {
+    "id":"alice",
+    "title":"Alice"
+    },
+  "bob": {
     "id":"bob",
     "title":"Bob"
-    },
-  {
-    "id":"shopping_cart",
-    "title":"Shopping Cart"
     }
-]
+}
