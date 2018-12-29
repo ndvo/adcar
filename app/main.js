@@ -11,14 +11,13 @@ var Users = {};
  */
 function setUser(){
   Application.currentUser = document.querySelector('[name=login]:checked').value;
-  console.log(Application.currentUser);
   let preserveStored = true;
   unselectAd(preserveStored);
-  console.log(Users, Application);
   let selected = Users[Application.currentUser].selected;
   if (selected){
     document.getElementById(selected).querySelector('button').click();
   }
+  setGains(Users[Application.currentUser].gains);
 }
 
 /** 
@@ -51,13 +50,20 @@ function selectAd(){
 /**
  * Cash out the reward
  */
-function cashOut(){
-  let management = document.querySelector('#section-management main');
-  let activeAd = management.querySelector('.ad-card');
-  let value = Number(activeAd.querySelector('span').innerText);
-  let gains = management.parentNode.querySelector('.gains');
-  gains.innerText = Number(gains.innerText)+value;
+function cashOut(addCurrent=true){
+  let value = addCurrent ? Number(document.querySelector('#section-management .ad-card span').innerText) : 0 ;
+  let gains = Number(Users[Application.currentUser].gains);
+  setGains(value+gains);
+  storeGains(value+gains);
   unselectAd();
+}
+
+function setGains(value){
+  document.querySelector('#section-management .gains').innerText = value;
+}
+
+function storeGains(value){
+  Users[Application.currentUser].gains = value;
 }
 
 /** 

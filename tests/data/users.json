@@ -3,11 +3,13 @@
   {
     "id":"alice",
     "title":"Alice",
-    "selected":""
+    "selected":"",
+    "gains":""
     },
   "bob": {
     "id":"bob",
     "title":"Bob",
-    "selected":""
+    "selected":"",
+    "gains":""
     }
 }
