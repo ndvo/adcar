@@ -7,6 +7,7 @@ var Users = {};
 /*** Actions  ***/
 
 /**
+<<<<<<< HEAD
  * Change users
  */
 function setUser(){
@@ -22,6 +23,8 @@ function setUser(){
 }
 
 /** 
+=======
+>>>>>>> f7cc82fbbb4322fdac263928e6abc9b7518d4af3
  * Select and activate an Ad
  */
 function selectAd(){
@@ -60,7 +63,7 @@ function cashOut(){
   unselectAd();
 }
 
-/** 
+/**
  * Un-select any selected ad
  */
 function unselectAd(preserveStored){

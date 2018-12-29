@@ -17,6 +17,7 @@ Variables
 :root{
   --color-primary: #3f786f;       /*dark grey*/
   --color-primary-alt: #2a6259;
+  --color-primary-glass: rgba(63,120,111,.4);
   --color-secondary: #44b3a2;     /*blueish grey*/
   --color-secondary-alt: #329485;
   --color-tertiary: #dfdce3;      /*light grey*/
@@ -112,15 +113,55 @@ main{
   width: 90vw;
   max-width: 1024px;
 }
+
+main>section{
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  width:100%;
+}
   #section-management,
   #available-ads {
     background-color: var(--color-light-glass);
-    border-radius: 10px;
-    box-sizing: border-box;
-    margin: 10px 20px;
-    padding: 10px 20px;
-    width:100%;
   }
+  #section-brands{
+    background-color: var(--color-primary-glass);
+  }
+    #section-brands *{
+      margin: 0;
+      padding: 0;
+    }
+    #section-brands legend{
+      display: none;
+    }
+    #section-brands fieldset{
+      /* box-shadow: none; */
+      border: none;
+      /* display: flex; */
+    }
+    #section-brands input,
+    #section-brands figcaption{
+      display: none;
+    }
+    #section-brands label{
+      display: inline-block;
+    }
+    #section-brands img{
+      background-color: var(--color-primary-glass);
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin: 10px 10px 6px;
+      opacity: .3;
+    }
+    #section-brands input[type="checkbox"]:checked + figure img{
+      opacity: 1.0;
+    }
+
+
+
   main>section h1{
     border-bottom: 2px solid var(--color-secondary);
     color: var(--color-light);
