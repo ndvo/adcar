@@ -15,8 +15,24 @@ function fetch_companies(){
   xhr.send();
 }
 
+function fetch_ads(){
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET', '/tests/data/ads.json');
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState == xhr.DONE){
+      if (xhr.status == 200){
+        fill_template('#available-ads main', JSON.parse(xhr.responseText), '#ad-card', fill_ad);
+      }else{
+        console.log('<dialog>Error: it was not possible to retrieve brand data.</dialog>');
+      }
+    }
+  };
+  xhr.send();
+}
 
 function fill_ad(el, ad){
+  console.log(el, ad);
+  el.querySelector('h1').innerHTML = ad.title;
   el.querySelector('img').setAttribute('src', ad.image);
   el.querySelector('img').setAttribute('alt', ad.alt);
   el.querySelector('span').innerHTML = ad.value;
@@ -43,4 +59,5 @@ function fill_template(target_selector, data, template_selector, fill_func){
 }
 
 
+fetch_ads();
 fetch_companies();
