@@ -1,5 +1,47 @@
 
 
+// Actions 
+
+/** 
+ * Select and activate an Ad
+ */
+function selectAd(){
+  let clone = this.parentElement.cloneNode(true);
+  let management = document.querySelector('#section-management main');
+  let availableAds = document.querySelector('#available-ads');
+  management.innerHTML = '';
+  management.appendChild(clone);
+  availableAds.classList.add('block-ad');
+  Array.from(availableAds.querySelectorAll('button')).forEach(
+    function(e){
+      e.disabled = true;
+      e.removeEventListener('click', selectAd);
+    }
+  );
+}
+
+/** 
+ * Un-select any selected ad
+ */
+function unselectAd(){
+  let management = document.querySelector('#section-management main');
+  let availableAds = document.querySelector('#available-ads');
+  let activeAd = management.querySelector('ad-card');
+  activeAd.parentNode.removeChild(activeAd);
+  availableAds.classList.remove('block-ad');
+  Array.from(availableAds.querySelectorAll('button')).forEach(
+    function(e){
+      e.disabled = false;
+      activateAdButton(e);
+    }
+  );
+}
+
+function activateAdButton(el){
+  el.addEventListener('click', selectAd);
+}
+
+// Services 
 function fetch_companies(){
   let xhr = new XMLHttpRequest();
   xhr.open('GET', '/tests/data/brands.json');
@@ -30,21 +72,25 @@ function fetch_ads(){
   xhr.send();
 }
 
+
+// Fill Functions
 function fill_ad(el, ad){
-  console.log(el, ad);
   el.querySelector('h1').innerHTML = ad.title;
-  el.querySelector('img').setAttribute('src', ad.image);
+  el.querySelector('img').setAttribute('src', '/content/images/'+ad.image);
   el.querySelector('img').setAttribute('alt', ad.alt);
   el.querySelector('span').innerHTML = ad.value;
   el.querySelector('span:nth-child(2)').innerHTML = ad.period;
   el.querySelector('span:nth-child(3)').innerHTML = ad['duration-measure'];
+  activateAdButton(el.querySelector('button'));
 }
 
 function fill_company(el, company){
-  el.querySelector('img').setAttribute('src', company.logo);
+  el.querySelector('img').setAttribute('src', '/content/images/'+company.logo);
   el.querySelector('figcaption').innerHTML = company.name;
 }
 
+
+// Fill template engine
 function fill_template(target_selector, data, template_selector, fill_func){
   let target = document.querySelector(target_selector);
   let template = document.querySelector(template_selector); 
@@ -54,7 +100,6 @@ function fill_template(target_selector, data, template_selector, fill_func){
   }
   target.innerHTML  += content;
   for (let i=0; i<data.length; i++){
-    console.log(template.id ,template.querySelectorAll('.'+template.id)[i], data[i]);
     fill_func(target.querySelectorAll('.'+template.id)[i], data[i]);
   }
 }
