@@ -127,6 +127,38 @@ main{
     padding-bottom: 8px;
   }
 
-ad-card{
-  
+#available-ads{
+
 }
+  #available-ads>main{
+    align-content: stretch;
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+.ad-card{
+  background-color: var(--color-tertiary);
+  border: 2px solid var(--color-light);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  min-height: 300px;
+}
+  .ad-card h1{
+
+  }
+  .ad-card img{
+    order: 1;
+  }
+  .ad-card p{
+
+  }
+  .ad-card button{
+
+  }
+  .ad-card.block-ad button{
+    display: none;
+  }
