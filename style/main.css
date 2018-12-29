@@ -128,18 +128,25 @@ main>section{
     background-color: var(--color-light-glass);
   }
 
-  #section-management{
+  .gains{
 
+  }
+  .gains::before{
+    content:"you earned US$ "
+  }
+  .gains::after{
+    content:",00"
   }
 
   #section-management footer{
     border-top: 2px solid var(--color-secondary);
     padding: 10px 0;
-    display: flex;
+    display: none;
     justify-content: flex-end;
+    margin-top: 20px;
   }
-  #section-management footer.hide{
-    display:none;
+  #section-management.active footer{
+    display: flex;
   }
 
   #section-management footer button{
