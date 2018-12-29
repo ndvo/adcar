@@ -2,10 +2,14 @@
   "alice":
   {
     "id":"alice",
-    "title":"Alice"
+    "title":"Alice",
+    "selected":"",
+    "gains":""
     },
   "bob": {
     "id":"bob",
-    "title":"Bob"
+    "title":"Bob",
+    "selected":"",
+    "gains":""
     }
 }
