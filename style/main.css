@@ -17,6 +17,7 @@ Variables
 :root{
   --color-primary: #3f786f;       /*dark grey*/
   --color-primary-alt: #2a6259;
+  --color-primary-glass: rgba(63,120,111,.4);
   --color-secondary: #44b3a2;     /*blueish grey*/
   --color-secondary-alt: #329485;
   --color-tertiary: #dfdce3;      /*light grey*/
@@ -112,15 +113,28 @@ main{
   width: 90vw;
   max-width: 1024px;
 }
+
+main>section{
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  width:100%;
+}
   #section-management,
   #available-ads {
     background-color: var(--color-light-glass);
-    border-radius: 10px;
-    box-sizing: border-box;
-    margin: 10px 20px;
-    padding: 10px 20px;
-    width:100%;
   }
+  #section-brands{
+    background-color: var(--color-primary-glass);
+  }
+    #section-brands label{
+    }
+    #section-brands fieldset{
+      border: none;
+    }
+
+
   main>section h1{
     border-bottom: 2px solid var(--color-secondary);
     color: var(--color-light);
