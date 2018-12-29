@@ -1,9 +1,8 @@
+var Application = {};
+var Users = {};
 
 
-
-
-
-// Actions 
+/*** Actions  ***/
 
 /** 
  * Select and activate an Ad
@@ -56,6 +55,8 @@ function unselectAd(){
   );
 }
 
+
+/*** Utils ***/
 function activateAdButton(el){
   el.addEventListener('click', selectAd);
 }
@@ -74,7 +75,11 @@ function toggleActivateActionsButtons(el){
   activateActionsButtons(el, el.disabled);
 }
 
-// Services 
+function setUser(){
+  Application.currentUser = document.querySelector('[name=login]:checked]').value;
+}
+
+/*** Services ***/
 function fetch_companies(){
   let xhr = new XMLHttpRequest();
   xhr.open('GET', '/tests/data/brands.json');
@@ -105,8 +110,19 @@ function fetch_ads(){
   xhr.send();
 }
 
+function fetch_users(){
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET', '/tests/data/users.json');
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState == xhr.DONE){
+      if (xhr.status == 200){
+        Users = JSON.parse(xhr.responseText);
+      }
+    }
+  };
+}
 
-// Fill Functions
+/*** Fill Functions (Controlers) ***/
 function fill_ad(el, ad){
   el.querySelector('h1').innerHTML = ad.title;
   el.querySelector('img').setAttribute('src', '/content/images/'+ad.image);
@@ -123,7 +139,7 @@ function fill_company(el, company){
 }
 
 
-// Fill template engine
+/*** Template Engine ***/
 function fill_template(target_selector, data, template_selector, fill_func){
   let target = document.querySelector(target_selector);
   let template = document.querySelector(template_selector); 
@@ -137,13 +153,18 @@ function fill_template(target_selector, data, template_selector, fill_func){
   }
 }
 
-
+/*** Start ***/
 function preparePage(){
   document.querySelector('#section-management button.cancel')
-    .addEventListener('click',unselectAd);
+    .addEventListener('click', unselectAd);
   document.querySelector('#section-management button.ok')
-    .addEventListener('click',cashOut);
+    .addEventListener('click', cashOut);
+  document.querySelector('[name=login]')
+    .addEventListener('click', setUser);
+  setUser();
   fetch_ads();
+  fetch_users();
   fetch_companies();
 }
+
 preparePage();
